@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
 import useCartStore from '@/app/store/cartStore';
-import { useLocale, useTranslations } from 'next-intl';
 
 const NavBar = () => {
     const cartCount = useCartStore((state: any) => state.cart.length);
