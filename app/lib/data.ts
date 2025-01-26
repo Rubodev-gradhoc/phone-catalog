@@ -1,19 +1,18 @@
 import api from '@/app/lib/axios.instance';
 import { Phone, PhoneDetail } from '@/app/lib/definitons';
+
+const LIMIT_PER_PAGE = 20;
+
 export const getPhones = async (searchValue: string): Promise<Phone[]> => {
     try {
         const response = await api.get('/products', {
             params: {
                 search: searchValue,
+                limit: LIMIT_PER_PAGE,
             },
         });
-        // Remove duplicates
-        const phones = response.data.filter(
-            (phone: Phone, index: number, self: Phone[]) =>
-                self.findIndex(t => t.id === phone.id) === index
-        );
 
-        return phones;
+        return response.data;
     } catch (error) {
         return [];
     }
