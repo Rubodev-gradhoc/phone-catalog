@@ -42,5 +42,20 @@
             "description": "El teléfono que buscas no existe."
         },
         "productDescription": "Detalles y especificaciones de "
+    },
+    "Cart": {
+        "header": "Carrito ({count})",
+        "toast": {
+            "success": "Su compra se finalizó correctamente",
+            "action": "Seguir comprando"
+        },
+        "total": {
+            "label": "Total",
+            "full": "Total: {total}"
+        },
+        "button": {
+            "continue": "Seguir comprando",
+            "pay": "Pagar"
+        }
     }
 }

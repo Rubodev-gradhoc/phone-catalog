@@ -43,5 +43,20 @@
             "description": "The phone you are looking for does not exist."
         },
         "productDescription": "Details and specifications of "
+    },
+    "Cart": {
+        "header": "Cart ({count})",
+        "toast": {
+            "success": "Your purchase was successfully completed",
+            "action": "Continue shopping"
+        },
+        "total": {
+            "label": "Total",
+            "full": "Total: {total}"
+        },
+        "button": {
+            "continue": "Continue shopping",
+            "pay": "Pay"
+        }
     }
 }

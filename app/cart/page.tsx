@@ -6,8 +6,10 @@ import Button from '../components/Button/Button';
 import styles from './Cart.module.css';
 import { useRouter } from 'next/navigation';
 import useToastStore from '../store/useToastStore';
+import { useTranslations } from 'next-intl';
 
 const Cart = () => {
+    const t = useTranslations('Cart');
     const router = useRouter();
     const phonesCart = useCartStore((state: any) => state.cart);
     const clearCart = useCartStore((state: any) => state.clearCart);
@@ -37,17 +39,13 @@ const Cart = () => {
 
     const handleClick = () => {
         clearCart();
-        showToast(
-            'Su compra se finalizó correctamente',
-            'SEGUIR COMPRANDO',
-            () => {
-                router.push('/');
-            }
-        );
+        showToast(t('toast.success'), t('toast.action'), () => {
+            router.push('/');
+        });
     };
     return (
         <main className={styles.main}>
-            <header>Cart ({phonesCart.length})</header>
+            <header>{t('header', { count: phonesCart.length })}</header>
             <section className={styles.content}>
                 {phonesCart.map((phone: any) => (
                     <CartCard key={phone.id} phone={phone} />
@@ -57,7 +55,7 @@ const Cart = () => {
                 {isSmallScreen ? (
                     <>
                         <div className={styles.totalMin}>
-                            <p>Total:</p>
+                            <p>{t('total.label')}:</p>
                             <p>{total} EUR</p>
                         </div>
                         <div className={styles.totalAndPay}>
@@ -66,13 +64,13 @@ const Cart = () => {
                                 className={styles.continueButton}
                                 onClick={handleGoHome}
                             >
-                                Continue shopping
+                                {t('button.continue')}
                             </Button>
                             <Button
                                 className={styles.payButton}
                                 onClick={handleClick}
                             >
-                                Pay
+                                {t('button.pay')}
                             </Button>
                         </div>
                     </>
@@ -83,18 +81,18 @@ const Cart = () => {
                             className={styles.continueButton}
                             onClick={handleGoHome}
                         >
-                            Continue shopping
+                            {t('button.continue')}
                         </Button>
                         {phonesCart.length > 0 && (
                             <div className={styles.totalAndPay}>
                                 <p className={styles.total}>
-                                    Total: {total} EUR
+                                    {t('total.full', { total })} EUR
                                 </p>
                                 <Button
                                     className={styles.payButton}
                                     onClick={handleClick}
                                 >
-                                    Pay
+                                    {t('button.pay')}
                                 </Button>
                             </div>
                         )}
