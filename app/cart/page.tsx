@@ -66,12 +66,14 @@ const Cart = () => {
                             >
                                 {t('button.continue')}
                             </Button>
-                            <Button
-                                className={styles.payButton}
-                                onClick={handleClick}
-                            >
-                                {t('button.pay')}
-                            </Button>
+                            {phonesCart.length > 0 && (
+                                <Button
+                                    className={styles.payButton}
+                                    onClick={handleClick}
+                                >
+                                    {t('button.pay')}
+                                </Button>
+                            )}
                         </div>
                     </>
                 ) : (
